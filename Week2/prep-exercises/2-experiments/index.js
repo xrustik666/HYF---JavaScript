@@ -47,10 +47,8 @@ function main() {
   const sampleSizes = [100, 1000, 1000000];
 
   for (let sizeElement of sampleSizes) {
-    console.log(`[${runExperiment(sizeElement)}] ${sizeElement}`);
+    console.log(runExperiment(sizeElement), sizeElement);
   }
-
-  
 
   // TODO
   // Write a for..of loop that calls the `runExperiment()` function for each
