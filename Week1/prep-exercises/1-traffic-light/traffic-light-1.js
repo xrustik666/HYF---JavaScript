@@ -10,19 +10,19 @@ const trafficLight = {
 let rotations = 0;
 
 while (rotations < 2) {
-  const currentState = trafficLight.state;
+  //const currentState = trafficLight.state;
 
-  if (currentState === "green") {
+  if (trafficLight.state === "green") {
     trafficLight.state = "orange";
-  } else if (currentState === "orange") {
+  } else if (trafficLight.state === "orange") {
     trafficLight.state = "red";
-  } else if (currentState === "red") {
+  } else if (trafficLight.state === "red") {
     trafficLight.state = "green";
     
     rotations++;
   }
 
-  console.log("The traffic light is on", currentState);
+  console.log("The traffic light is on", trafficLight.state);
   
   // TODO
   // if the color is green, turn it orange

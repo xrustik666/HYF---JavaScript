@@ -3,6 +3,12 @@
 function runExperiment(sampleSize) {
   const valueCounts = [0, 0, 0, 0, 0, 0];
 
+  for (let i = 0; i < sampleSize; i++) {
+    const randNum = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+
+    valueCounts[randNum - 1]++;
+  }
+
   // TODO
   // Write a for loop that iterates `sampleSize` times (sampleSize is a number).
   // In each loop iteration:
@@ -13,7 +19,16 @@ function runExperiment(sampleSize) {
   //    for keeping a count how many times the value 1 is thrown, the second
   //    element for value 2, etc.
 
+  let count = 0;
+
   const results = [];
+
+  for (let valueCount of valueCounts) {
+    //console.log(`Array value: ${valueCount}`);
+
+    results[count] = (valueCount * 100 / sampleSize).toFixed(2) + "%";
+    count++;
+  }
 
   // TODO
   // Write a for..of loop for the `valueCounts` array created in the previous
@@ -30,6 +45,12 @@ function runExperiment(sampleSize) {
 
 function main() {
   const sampleSizes = [100, 1000, 1000000];
+
+  for (let i = 0; i < sampleSizes.length; i++) {
+    console.log(`${runExperiment(sampleSizes[i])} | ${sampleSizes[i]}`);
+  }
+
+  
 
   // TODO
   // Write a for..of loop that calls the `runExperiment()` function for each
