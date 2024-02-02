@@ -46,8 +46,8 @@ function runExperiment(sampleSize) {
 function main() {
   const sampleSizes = [100, 1000, 1000000];
 
-  for (let i = 0; i < sampleSizes.length; i++) {
-    console.log(`${runExperiment(sampleSizes[i])} | ${sampleSizes[i]}`);
+  for (let sizeElement of sampleSizes) {
+    console.log(`[${runExperiment(sizeElement)}] ${sizeElement}`);
   }
 
   
