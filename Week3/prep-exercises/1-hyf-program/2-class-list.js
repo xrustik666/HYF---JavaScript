@@ -17,7 +17,7 @@ import { modules, students, mentors, classes } from "./hyf.js";
 //console.log(getModuleName('class34'));
 
 const getPeopleOfClass = (className) => {
-  // This function returns current module name of a class
+  // Returns current module name of a class
   const getModuleName = (className) => {
     for (let i = 0; i < classes.length; i++) {
       if ('currentModule' in classes[i] && classes[i].name === className) {
@@ -25,7 +25,7 @@ const getPeopleOfClass = (className) => {
       }
     }
   
-    return 'There is no current module in this class';
+    return false;
   }
 
   // List of people who are participating in a class
@@ -38,6 +38,7 @@ const getPeopleOfClass = (className) => {
         name: mentors[i].name,
         role: 'mentor'
       };
+
       activePeople.push(mentor);
     }
   }
@@ -49,21 +50,18 @@ const getPeopleOfClass = (className) => {
         name: students[i].name,
         role: 'student'
       };
+
       activePeople.push(student);
     }
   }
 
-  // Returning the list of participants
-  return activePeople;
-  /*
-  for (let i = 0; i < activePeople.length; i++) {
-    return `{name: ${activePeople[i]}}`;
-  }
-  */
+  if (getModuleName (className) === false) {
+    return "No active people in this class"
+  } else return activePeople;
 };
 
 // You can uncomment out this line to try your function
-console.log(getPeopleOfClass('class34'));
+//console.log(getPeopleOfClass('class34'));
 
 /**
  * We would like to have a complete overview of the current active classes.
@@ -78,7 +76,20 @@ console.log(getPeopleOfClass('class34'));
  *  }
  */
 const getActiveClasses = () => {
-  // TODO complete this function
+  let activeClasses = [];
+
+  for (let i = 0; i < classes.length; i++) {
+    if (classes[i].active) {
+      activeClasses.push(classes[i].name);
+    }
+  }
+
+  return activeClasses;
 };
-// You can uncomment out this line to try your function
-// console.log(getActiveClasses());
+
+// Show all active people for each active class
+const showActiveClasses = getActiveClasses();
+
+for (let i = 0; i < showActiveClasses.length; i++) {
+  console.log(showActiveClasses[i], getPeopleOfClass(showActiveClasses[i]));
+}
