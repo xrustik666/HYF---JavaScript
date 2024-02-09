@@ -12,35 +12,54 @@ import { modules, students, mentors, classes } from "./hyf.js";
  *  [{ name: 'John', role: 'student' }, { name: 'Mary', role: 'mentor' }]
  */
 
-const getModuleName = (className) => {
-  for (let i = 0; i < classes.length; i++) {
-    if ('currentModule' in classes[i] && classes[i].name === className) {
-      return classes[i].currentModule;
-    }
-  }
 
-  return 'There is no current module in this class';
-}
 
 //console.log(getModuleName('class34'));
 
 const getPeopleOfClass = (className) => {
+  // This function returns current module name of a class
+  const getModuleName = (className) => {
+    for (let i = 0; i < classes.length; i++) {
+      if ('currentModule' in classes[i] && classes[i].name === className) {
+        return classes[i].currentModule;
+      }
+    }
+  
+    return 'There is no current module in this class';
+  }
+
+  // List of people who are participating in a class
   let activePeople = [];
 
-  
+  // Searching mentors who are teaching now
   for (let i = 0; i < mentors.length; i++) {
     if (mentors[i].nowTeaching === getModuleName(className)) {
-      activePeople.push(mentors[i].name);
+      let mentor = {
+        name: mentors[i].name,
+        role: 'mentor'
+      };
+      activePeople.push(mentor);
     }
   }
 
+  // Searching students who study in a class
   for (let i = 0; i <students.length; i++) {
     if (students[i].class === className) {
-      activePeople.push(students[i].name);
+      let student = {
+        name: students[i].name,
+        role: 'student'
+      };
+      activePeople.push(student);
     }
   }
 
+  // Returning the list of participants
   return activePeople;
+  /*
+  for (let i = 0; i < activePeople.length; i++) {
+    return `{name: ${activePeople[i]}}`;
+  }
+  */
 };
 
 // You can uncomment out this line to try your function
