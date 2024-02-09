@@ -10,7 +10,17 @@ Once you have found those numbers, multiply the numbers and store the result of 
 const list = [1721, 979, 366, 299, 675, 1456];
 let result;
     
-// Write your code here
+for (let i = 0; i < list.length; i++) {
+  for (let j = 0; j < list.length; j++) {
+    for (let k = 0; k < list.length; k++) {
+      if ((list[i] + list[j] + list[k]) === 2020) {
+        
+        result = list[i] * list[j] * list[k];
+        console.log(`${list[i]} * ${list[j]} * ${list[k]} = ${result}`);
+      }
+    }
+  }
+}
 
 
 // TEST CODE, do not change

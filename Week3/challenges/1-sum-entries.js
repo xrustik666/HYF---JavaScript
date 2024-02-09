@@ -11,6 +11,14 @@ const list = [1721, 979, 366, 299, 675, 1456];
 let result;
     
 // Write your code here
+for (let i = 0; i < list.length; i++) {
+  for (let j = i + 1; j < list.length; j++) {
+    if ((list[i] + list[j]) == 2020) {
+      console.log(list[i] + " x " + list[j] + " = " + list[i]*list[j])
+      result = list[i] * list[j];
+    }
+  }
+}
 
 
 // TEST CODE, do not change

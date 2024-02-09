@@ -19,9 +19,8 @@ function runExperiment(sampleSize) {
   //    for keeping a count how many times the value 1 is thrown, the second
   //    element for value 2, etc.
 
-  let count = 0;
-
   const results = [];
+  let count = 0;
 
   for (let valueCount of valueCounts) {
     //console.log(`Array value: ${valueCount}`);
@@ -44,7 +43,7 @@ function runExperiment(sampleSize) {
 }
 
 function main() {
-  const sampleSizes = [100, 1000, 1000000];
+  const sampleSizes = [100, 1000, 1000000, 10000000, , 1000000000];
 
   for (let sizeElement of sampleSizes) {
     console.log(runExperiment(sizeElement), sizeElement);

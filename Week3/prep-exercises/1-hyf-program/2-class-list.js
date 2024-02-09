@@ -11,11 +11,40 @@ import { modules, students, mentors, classes } from "./hyf.js";
  *
  *  [{ name: 'John', role: 'student' }, { name: 'Mary', role: 'mentor' }]
  */
+
+const getModuleName = (className) => {
+  for (let i = 0; i < classes.length; i++) {
+    if ('currentModule' in classes[i] && classes[i].name === className) {
+      return classes[i].currentModule;
+    }
+  }
+
+  return 'There is no current module in this class';
+}
+
+//console.log(getModuleName('class34'));
+
 const getPeopleOfClass = (className) => {
-  // TODO complete this function
+  let activePeople = [];
+
+  
+  for (let i = 0; i < mentors.length; i++) {
+    if (mentors[i].nowTeaching === getModuleName(className)) {
+      activePeople.push(mentors[i].name);
+    }
+  }
+
+  for (let i = 0; i <students.length; i++) {
+    if (students[i].class === className) {
+      activePeople.push(students[i].name);
+    }
+  }
+
+  return activePeople;
 };
+
 // You can uncomment out this line to try your function
-// console.log(getPeopleOfClass('class34'));
+console.log(getPeopleOfClass('class34'));
 
 /**
  * We would like to have a complete overview of the current active classes.
