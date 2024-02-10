@@ -76,20 +76,15 @@ const getPeopleOfClass = (className) => {
  *  }
  */
 const getActiveClasses = () => {
-  let activeClasses = [];
+  let activeClasses = {};
 
   for (let i = 0; i < classes.length; i++) {
     if (classes[i].active) {
-      activeClasses.push(classes[i].name);
+      activeClasses[classes[i].name] = getPeopleOfClass(classes[i].name);
     }
   }
 
   return activeClasses;
 };
 
-// Show all active people for each active class
-const showActiveClasses = getActiveClasses();
-
-for (let i = 0; i < showActiveClasses.length; i++) {
-  console.log(showActiveClasses[i], getPeopleOfClass(showActiveClasses[i]));
-}
+console.log(getActiveClasses());
