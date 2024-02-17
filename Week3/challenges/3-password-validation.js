@@ -21,3 +21,13 @@ const passwordList = [
     { times: '1-3', letter: 'b', password: 'cdefg'},
     { times: '2-9', letter: 'c', password: 'ccccccccc'}
 ];
+
+const checkPassword = function(password) {
+    if (password.password.includes(password.letter) && ) {
+      return true;
+    } else return false;
+}
+
+for (let i = 0; i < passwordList.length; i++) {
+  console.log(checkPassword(passwordList[i]));
+}
